@@ -63,22 +63,22 @@ bag.items[2].count // the count of the item at index #2
 let person = {
     firstName: "Dopple",
     lastName: "Ganger"
-  }
-  
-  let p = person
-  p.firstName= "Chappy"
-  
-  console.log(p)
-  console.log(person)
+}
+
+let p = person
+p.firstName = "Chappy"
+
+console.log(p)
+console.log(person)
 /* 
 JS now says "listen here buddy, arrays can become very long,
 and I don't want to waste memory on the exact same data!"
 So instead of creating new memory,
 JS will just say "hey, I'll just associate between
 nums and numbers - whatever you do to one I'll do to the other."
-*/  
+*/
 
-let p1 ={
+let p1 = {
     name: "roi",
     age: 28,
     city: "TLV"
@@ -90,66 +90,62 @@ let p2 = {
     city: "TLV"
 }
 
-if(p1.age == p2.age){
-    if(p1.city == p2.city){
+if (p1.age == p2.age) {
+    if (p1.city == p2.city) {
         console.log(p1.name + ' want to date ' + p2.name)
-    }else{
+    } else {
         console.log(p1.name + ' want to date ' + p2.name + ' but he culdnot')
     }
-}else {
-    console.log(p1.name +' and' + p2.name + ' are not in the same age, they canot go dating')
+} else {
+    console.log(p1.name + ' and' + p2.name + ' are not in the same age, they canot go dating')
 }
 
 
 const myList = [
-    {firsName : "roi", lastName: "ben ishai"},
-    {firsName : "shir", lastName: "ben ishai"}
+    { firsName: "roi", lastName: "ben ishai" },
+    { firsName: "shir", lastName: "ben ishai" }
 ]
 console.log(myList)
 
 myList[0].firsName = "lolo"
-myList.splice(1,1)
+myList.splice(1, 1)
 console.log(myList)
 
 
 
 const secondList = [
-    {firsName : "David", lastName: "ben ishai"},
-    {firsName : "shany", lastName: "ben ishai"}
+    { firsName: "David", lastName: "ben ishai" },
+    { firsName: "shany", lastName: "ben ishai" }
 ]
 
-myList.splice(myList.length,0, ...secondList)
+myList.splice(myList.length, 0, ...secondList)
 console.log(myList)
 
 
 const library = {
     books: [
-        {title: "never ending story", auther:"Michael Ende"},
-        {title: "king of humos anf queen of bath", auther:"Ilan Hytner"},
+        { title: "never ending story", auther: "Michael Ende" },
+        { title: "king of humos anf queen of bath", auther: "Ilan Hytner" },
     ]
 }
 
-myList.splice(myList.length,0,...library.books)
+myList.splice(myList.length, 0, ...library.books)
 
 
 const reservations = {
     Bob: { claimed: false },
     Ted: { claimed: true }
-  }
-  
-const name = prompt('Please enter the name for your reservation');
+}
 
-if (reservations[name]){
-    alert(`Welcome  ${name}`)
-}else if (reservations[name]){
-    alert("Hmm, someone already claimed this reservation")
-}else {
+const name = prompt('Please enter the name for your reservation');
+console.log(reservations.hasOwnProperty(name))
+if (reservations.hasOwnProperty(name)) {
+    if (reservations[name].claimed) {
+        alert("Hmm, someone already claimed this reservation")
+    } else {
+        alert(`Welcome  ${name}`)
+    }
+}
+else {
     alert("You have no reservation")
 }
-
-
- {
-    
-}
-  
-
