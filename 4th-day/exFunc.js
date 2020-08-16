@@ -91,105 +91,109 @@ const makeRegal = function (name) {
 turnToKing("martin luther", 100) // should print "His Royal Highness, MARTIN LUTHER has 1300 gold coins"
 
 
-//ex8
-const splice = function (arr, startPoint, delAfterStart, ...add) {
-    let newArr = []
-    let delArr = []
-    if (startPoint > arr.length) {
-        startPoint = arr.length
-    } else if (startPoint < 0) {
-        startPoint += arr.length
-    }
-    if (delAfterStart ==undefined) {
-        for (let i = 0; i < arr.length; i++) {
-            if (i === startPoint) {
-                newArr.push(arr[i])
-            } else {
-                delArr.push(arr[i])
-            }
-        }
-        arr.length = 0
-        for (let j in newArr) {
-            arr[j] = newArr[j]
-        }
-    } else if (delAfterStart > 0 && add == undefined) {
-        for (let i = 0; i < arr.length; i++) {
-            if (i === startPoint) {
-                delArr.push(arr[i])
-                delAfterStart--
-            } else {
-                newArr.push(arr[i])
-            }
-        }
-        arr.length = 0
-        for (let j in newArr) {
-            arr[j] = newArr[j]
-        }
-    } else if (delAfterStart > 0 && add != undefined) {
-        for (let i = 0; i < arr.length; i++) {
-            if (i === startPoint) {
-                delArr = [arr[i]]
-                newArr[i] = [...add]
-                delAfterStart--
-            } else {
-                newArr.push(arr[i])
-            }
-        }
-        arr.length = 0
-        for (let j in newArr) {
-            arr[j] = newArr[j]
-        }
-    } else if (delAfterStart === 0) {
-        for (i = 0; i < arr.length; i++) {
-            if (i === startPoint) {
-                newArr = [...add, ...arr]
-            }
-        }
-        arr.length = 0
-        for (let j in newArr) {
-            arr[j] = newArr[j]
-        }
-    }
+// //ex8
+// const splice = function (arr, startPoint, delAfterStart, ...add) {
+//     let newArr = []
+//     let delArr = []
+//     if (startPoint > arr.length) {
+//         startPoint = arr.length
+//     } else if (startPoint < 0) {
+//         startPoint += arr.length
+//     }
+//     if (delAfterStart === undefined) { //removing all the values in the array if user dont give the delAfterStart parameter
+//         for (let i = 0; i < arr.length; i++) { // run all the givin array
+//             if (i < startPoint) { // if iteretion smaller then the start point parameter
+//                 newArr.push(arr[i])//push the arr value to the new arr
+//             } else {
+//                 delArr.push(arr[i]) // if not push it to the delete array
+//             }
+//         }
+//         arr.length = 0 // init the arry length to be 0 (empty)
+//         for (let j in newArr) {
+//             arr[j] = newArr[j]
+//         } // the givin arry is now taking the values of new arry that we created
+
+//     } else if (delAfterStart > 0 && add == undefined) { // removing all the values by delAfterStart counting
+//         for (let i = 0; i < arr.length; i++) {// run all the givin array
+//             if (i === startPoint) { //if i equal to start point
+//                 delArr.push(arr[i]) // push the value to deleted array
+//                 delAfterStart-- // Subtraction the delete after stop by 1
+//             } else {
+//                 newArr.push(arr[i]) // other push it to new array
+//             }
+//         }
+//         arr.length = 0// init the arry length to be 0 (empty)
+//         for (let j in newArr) {
+//             arr[j] = newArr[j]
+//         }// the givin arry is now taking the values of new arry that we created
+
+//     } else if (delAfterStart > 0 && add != undefined) { // removing all the values by delAfterStart counting and adding the new parameters in the add rest parameter
+//         for (let i = 0; i < arr.length; i++) {// run all the givin array
+//             if (i === startPoint) {// check if i equal to start point parameter
+//                 for (let j in add) { //create for loop that run over the add parameret (if we have more then 1 parameter the rest parameter (...add) , create for us an array of parameters)
+//                     newArr.push(add[j])
+//                 }
+//                 delArr = [arr[i]]
+//                 delAfterStart--
+//             } else {
+//                 newArr.push(arr[i])
+//             }
+//         }
+//         arr.length = 0
+//         for (let j in newArr) {
+//             arr[j] = newArr[j]
+//         }
+//     } else if (delAfterStart === 0) { // here we dont want to delet nothing only adding to the array
+//         for (i = 0; i < arr.length; i++) {
+//             if (i === startPoint) {
+//                 newArr = [...add, ...arr]
+//             }
+//         }
+//         arr.length = 0
+//         for (let j in newArr) {
+//             arr[j] = newArr[j]
+//         }
+//     }
 
 
-    return arr
-}
+//     return arr
+// }
 
 
-// remove 1 element
-// let arrR = [1, 2, 3]
-// splice(arrR, 0, 1);
-// console.log(arrR); //should be [2,3]
+// // remove 1 element
+// // let arrR = [1, 2, 3]
+// // splice(arrR, 0, 1);
+// // console.log(arrR); //should be [2,3]
 
 
-// // add 1 element
+// // // add 1 element
+// // arrR = [1, 2, 3]
+// // splice(arrR, 0, 0, 0);
+// // console.log(arrR); //should be [0,1,2,3]
+
+
+// // add 2 elements
+// // arrR = [1, 2, 3]
+// // splice(arrR, 0, 0, -1, 0);
+// // console.log(arrR); //should be [-1,0,1,2,3]
+
+
+// // replace 1 element
 // arrR = [1, 2, 3]
-// splice(arrR, 0, 0, 0);
-// console.log(arrR); //should be [0,1,2,3]
-
-
-// add 2 elements
-// arrR = [1, 2, 3]
-// splice(arrR, 0, 0, -1, 0);
-// console.log(arrR); //should be [-1,0,1,2,3]
-
-
-// replace 1 element
-// arrR = [1, 2, 3]
-// splice(arrR, 1, 1, 55);
+// splice(arrR, 0, 2, 55, 65);
 // console.log(arrR); //should be [1,55,3] 
 
 
 // // delete all elements from index to end
-arrR = [1, 2, 3, 4, 5]
-splice(arrR, 1);
-console.log(arrR); //should be [1] 
+// arrR = [1, 2, 3, 4, 5]
+// splice(arrR, 1);
+// console.log(arrR); //should be [1] 
 
 
 // // returns array of deleted elements
-// arr = [1, 2, 3]
-// let deleted = splice(arr, 1);
-// console.log(deleted); //should be [2,3] 
+arrR = [1, 2, 3]
+let deleted = splice(arrR, 1);
+console.log(deleted); //should be [2,3] 
 
 
 // // returns an array of the deleted element (1 element)

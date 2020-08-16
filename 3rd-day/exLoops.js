@@ -99,12 +99,46 @@ const posts1 = [
 ]
 
 
-let userNumber = prompt("pleas enter a number 1-3")
-if (userNumber == 2) {
-    for (let numComm in posts1) {
-        if(posts1[numComm].comments.id ==3){
-            comments.splice(posts1.comments[id],1)
-        }
+// let userNumber = prompt("pleas enter a number 1-3")
+
+// let obj = {}
+// for (let i in posts1) {
+//     obj = posts1[i]
+//     for (let j in obj.comments) {
+//         if (obj.comments[j].id == 2) {
+//             obj.comments.splice(j, 1)
+//         }
+//     }
+// }
+// console.log(posts1)
+
+
+const input = document.createElement('input')
+input.setAttribute('type','number')
+input.placeholder = "enter number"
+const submit = document.createElement('input')
+submit.setAttribute('type', 'submit' )
+// submit.placeholder('delete')
+
+document.body.appendChild(input)
+document.body.appendChild(submit)
+
+
+submit.onclick = function (posts1) {
+    let ob = {
+        number: input.value
     }
+    for (let i in posts1) {
+        if (ob.number = posts1.comments[i].id)
+            ob = posts1[i]
+        for (let f in ob) {
+            if (ob.comments[f].id == 3) {
+                ob.comments.splice(j, 1)
+            }
+        }
+        posts1[i] = ob
+    }
+    console.log(posts1)
+
 }
-console.log(posts1)
+// console.log(posts1)
